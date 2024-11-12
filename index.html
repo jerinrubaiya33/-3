@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giant & Rock DX-Ball Game</title>
+    <style>
+        /* Base styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--bg-color, #f0f0f0);
+            transition: background-color 0.3s ease;
+        }
+
+        canvas {
+            background-color: lightblue;
+            border: 2px solid #333;
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+        }
+
+        /* Game status */
+        #gameStatus {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: calc(1.5rem + 1vw); /* Responsive font size */
+            font-weight: bold;
+            color: var(--text-color, #333);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Buttons */
+        .button {
+            position: absolute;
+            padding: 10px 20px;
+            font-size: calc(1rem + 0.5vw);
+            color: white;
+            background-color: var(--button-bg-color, #f44336);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        #pauseButton {
+            top: 20px;
+            left: 20px;
+        }
+
+        #themeToggle {
+            top: 20px;
+            right: 20px;
+            background-color: #00796b;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        /* Dark theme */
+        .dark-theme {
+            --bg-color: #333;
+            --text-color: #f0f0f0;
+            --button-bg-color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameStatus">Score: 0</div>
+    <button id="pauseButton" class="button">Pause</button>
+    <button id="themeToggle" class="button">Toggle Theme</button>
+
+    <script src="game.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        // Pause button functionality example (actual logic should be in game.js)
+        const pauseButton = document.getElementById('pauseButton');
+        let isPaused = false;
+        pauseButton.addEventListener('click', () => {
+            isPaused = !isPaused;
+            pauseButton.textContent = isPaused ? 'Resume' : 'Pause';
+            // Implement actual pause/resume functionality in the game.js
+        });
+    </script>
+</body>
+</html>
